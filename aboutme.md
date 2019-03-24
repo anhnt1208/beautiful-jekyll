@@ -1,10 +1,10 @@
 ---
 layout: page
 title: About me
-bigimg: /img/avatar/quaden_at_turkey.jpg
+subtitle: AnhNT's personal web page and blog
 ---
 
-My name is Tuan Anh. I have the following qualities:
+My name is Tuan Anh. 
 
 - Name      : Tuan Anh Nguyen
 - Codename  : QuaDen
