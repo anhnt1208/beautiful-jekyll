@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Những trang blog, web hay cho developer
-categories : reference link, blog
+subtitle: Danh sách những trang web, blog, ... cho developer 
+tags: [link, blog]
 ---
 
 ## Từ VN
