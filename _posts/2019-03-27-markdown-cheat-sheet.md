@@ -64,8 +64,8 @@ Result :
 Linked logo: [![alt text](https://www.google.com/s2/favicons?domain=www.google.com)](http://www.google.com "Title")
 
 
-<hr>
-Reference links 
-[Github-Basic writting and format syntax](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
-[Github-Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
-[Markdown Tutorial](https://www.markdowntutorial.com/)
+------
+#### Reference links  
+[Github-Basic writting and format syntax](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)  
+[Github-Mastering Markdown](https://guides.github.com/features/mastering-markdown/)  
+[Markdown Tutorial](https://www.markdowntutorial.com/)  
