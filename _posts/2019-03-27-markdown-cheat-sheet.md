@@ -63,13 +63,9 @@ Linked logo: [![alt text](https://www.google.com/s2/favicons?domain=www.google.c
 Result :  
 Linked logo: [![alt text](https://www.google.com/s2/favicons?domain=www.google.com)](http://www.google.com "Title")
 
-### Footnotes
-```
-I have more [^1] to say up here.
 
-[^1]: To say down here.
-```
-Result : 
-I have more [^1] to say up here.
-
-[^1]: To say down here.
+<hr>
+Reference links 
+[Github-Basic writting and format syntax](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
+[Github-Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+[Markdown Tutorial](https://www.markdowntutorial.com/)
