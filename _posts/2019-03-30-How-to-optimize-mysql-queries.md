@@ -6,7 +6,8 @@ tags: [performance, optimize, database, mysql, ]
 comments: true
 ---
 
-### Tip #1: Index All Columns Used in `where`, `order by`, and `group by` Clauses
+### Tip #1: Using Index 
+#### Index All Columns Used in `where`, `order by`, and `group by` Clauses
 An index is also very useful when it comes to sorting records.  
 Check the explain statement of query from the table with 500 rows without index  
 ```mysql
@@ -32,7 +33,17 @@ mysql> Explain select customer_id, customer_name from customers where customer_i
 |  1 | SIMPLE      | customers | NULL       | ref  | customer_id   | customer_id | 13      | const |    1 |   100.00 | NULL  |
 +----+-------------+-----------+------------+------+---------------+-------------+---------+-------+------+----------+-------+
 ```
-You can clearly see that the number of rows to scan will be 1
+You can clearly see that the number of rows to scan will be 1  
+#### Use Index Prefixes 
+Indexing only a prefix of column values in this way can make the index file much smaller.  
+When you index a BLOB or TEXT column, you must specify a prefix length for the index.  
+```mysql
+CREATE TABLE test (blob_col BLOB, INDEX(blob_col(10)));
+```
+Read more at [Column-Indexes](https://dev.mysql.com/doc/refman/8.0/en/column-indexes.html)  
+
+#### Multiple-Column Indexes
+[Multiple-Column Indexes](https://dev.mysql.com/doc/refman/8.0/en/multiple-column-indexes.html)
 
 ### Tip #2: Optimize Like Statements With Union Clause
 When want to select with like statment in 2 fields
