@@ -6,7 +6,7 @@ tags: [performance, optimize, database, mysql, ]
 comments: true
 ---
 
-### Tip #1: Index All Columns Used in 'where', 'order by', and 'group by' Clauses
+### Tip #1: Index All Columns Used in `where`, `order by`, and `group by` Clauses
 An index is also very useful when it comes to sorting records.  
 Check the explain statement of query from the table with 500 rows without index  
 ```mysql
@@ -17,9 +17,9 @@ mysql> explain select customer_id, customer_name from customers where customer_i
 |  1 | SIMPLE      | customers | NULL       | ALL  | NULL          | NULL | NULL    | NULL |  500 |    10.00 | Using where |
 +----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------------+
 ```
-First, it is clear that MySQL will conduct a full table scan because key column is 'NULL'.  
+First, it is clear that MySQL will conduct a full table scan because key column is `NULL`.  
 Second, MySQL server has clearly indicated that it's going to conduct a full scan on the 500 rows in our database.  
-To optimize the above query, we can just add an index to the 'customer_id' field 
+To optimize the above query, we can just add an index to the `customer_id` field 
 ```mysql
 mysql> Create index customer_id ON customers (customer_Id);
 Query OK, 0 rows affected (0.02 sec)
@@ -91,10 +91,10 @@ Using `TINYINT` is better than `INT`
 And use `DATETIME` for the fields expects a date value 
 
 #### Avoid `Null` Values
-Should avoid this kind of values whenever possible because they can harm your database results.
-Take a look at [Problem with NULL](https://dev.mysql.com/doc/refman/8.0/en/problems-with-null.html)
-Sometime, we will be confused and meet problem when use `count`, `sum`, `min` with `NULL` value
-Below query will output different values when select table having rows with `NULL` value
+Should avoid this kind of values whenever possible because they can harm your database results.  
+Take a look at [Problem with NULL](https://dev.mysql.com/doc/refman/8.0/en/problems-with-null.html)  
+Sometime, we will be confused and meet problem when use `count`, `sum`, `min` with `NULL` value.  
+Below query will output different values when select table having rows with `NULL` value  
 ```mysql
 create table `tb_user` (
   user_id INT AUTO_INCREMENT,
@@ -115,19 +115,19 @@ NULL	1+NULL	CONCAT('Invisible',NULL)
 Finaly, to avoid `NULL` value, should use `NOT NULL` and `DEFAULT` for field when designing table
 
 #### Avoid Too Many Columns
-Wide tables can be extremely expensive and require more CPU time to process.
-Instead of creating one wide table, consider splitting it apart in to logical structures.
-[Supporting Wide Table in Mysql](https://medium.com/build-acl/supporting-wide-tables-in-mysql-18248e4e3b0a)
+Wide tables can be extremely expensive and require more CPU time to process.  
+Instead of creating one wide table, consider splitting it apart in to logical structures.  
+[Supporting Wide Table in Mysql](https://medium.com/build-acl/supporting-wide-tables-in-mysql-18248e4e3b0a)  
 
 #### Optimize Joins
 Always include fewer tables in your join statements.  
 An SQL statement with poorly designed pattern that involves a lot of joins may not work well.  
-A rule of thumb is to have utmost a dozen joins for each query.
+A rule of thumb is to have utmost a dozen joins for each query.  
 
 ### Tip #5: MySQL Query Caching
 Should take advantage of MySQL query caching feature.  
 This will speed up performance when read operations are conducted  
-Can check if your MySQL server has query cache enabled by running the command below
+Can check if your MySQL server has query cache enabled by running the command below  
 ```mysql
 mysql> show variables like 'have_query_cache';
 +------------------+-------+
@@ -142,7 +142,7 @@ mysql> show variables like 'have_query_cache';
 
 ---
 Referenced link :  
-[How to Optimize MySQL Queries for Speed and Performance](https://dzone.com/articles/how-to-optimize-mysql-queries-for-speed-and-perfor)
-[Problem with NULL](https://dev.mysql.com/doc/refman/8.0/en/problems-with-null.html)
-[Supporting wide tables in MYSQL](https://medium.com/build-acl/supporting-wide-tables-in-mysql-18248e4e3b0a)
+[How to Optimize MySQL Queries for Speed and Performance](https://dzone.com/articles/how-to-optimize-mysql-queries-for-speed-and-perfor)  
+[Problem with NULL](https://dev.mysql.com/doc/refman/8.0/en/problems-with-null.html)  
+[Supporting wide tables in MYSQL](https://medium.com/build-acl/supporting-wide-tables-in-mysql-18248e4e3b0a)  
 
