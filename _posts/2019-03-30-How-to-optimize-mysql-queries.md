@@ -150,10 +150,10 @@ mysql> show variables like 'have_query_cache';
 ```
 
 ### Tip #6: Avoid `order by rand()`
-https://www.sqlshack.com/what-to-choose-when-assigning-values-to-sql-server-variables-set-vs-select-t-sql-statements/
-https://www.warpconduit.net/2011/03/23/selecting-a-random-record-using-mysql-benchmark-results/
-https://jan.kneschke.de/projects/mysql/order-by-rand/
-http://mysql.rjweb.org/doc.php/random
+https://www.sqlshack.com/what-to-choose-when-assigning-values-to-sql-server-variables-set-vs-select-t-sql-statements/  
+https://www.warpconduit.net/2011/03/23/selecting-a-random-record-using-mysql-benchmark-results/  
+https://jan.kneschke.de/projects/mysql/order-by-rand/  
+http://mysql.rjweb.org/doc.php/random  
 
 
 ---
