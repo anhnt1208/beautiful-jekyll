@@ -16,7 +16,7 @@ Read about the different levels of RAID and where they work best.
   </tr>
   <body>
   <tr>
-    <td>*RAID 0*</td>
+    <td>**RAID 0**</td>
     <td>
       Data striped across multi hard disk drives for maximum write perfomance.  
       No actual data protection
@@ -27,7 +27,8 @@ Read about the different levels of RAID and where they work best.
 
 | Level	| Description |
 | ----- | ----------- | 
-| *RAID 0* | Data striped across multi hard disk drives for maximum write perfomance.No actual data protection |
+| *RAID 0* | Data striped across multi hard disk drives for maximum write perfomance.  
+No actual data protection |
 
 
 RAID 1 	Synchronously mirros all data from each HDD to exact duplicate HDD
