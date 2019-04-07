@@ -20,7 +20,12 @@ Read about the different levels of RAID and where they work best.
     <td>
       <div>
       &#9642;Data striped across multi hard disk drives for maximum write perfomance.<br/>
-      &#9642;No actual data protection<br/>
+      &#9642;Lowest cost of all the RAID types because it uses disk space only to store data.<br/>
+      &#9642;Because there is no parity generated for RAID 0, there is no overhead to write data to disks.<br/>
+      &#9642;No redundancy. Any drive failure will cause complete data loss across all drives<br/>
+      &#9642;Capacity : All drives<br/>
+      &#9642;Read Performance : Excellent<br/>
+      &#9642;Write Performance : Excellent<br/>
       </div>
     </td>
   </tr>
@@ -29,8 +34,11 @@ Read about the different levels of RAID and where they work best.
     <td>
       <div>
       &#9642;Synchronously mirros all data from each HDD to exact duplicate HDD<br/>
-      &#9642;No data lost if of HDD faults or fails<br/><br/>
-      &#9642;Typically highest-performance RAID level at the expense of lower usable capacity <br/>
+      &#9642;The highest redundancy. No data lost if HDD faults or fails<br/>
+      &#9642;High cost. Typically highest-performance RAID level at the expense of lower usable capacity <br/>
+      &#9642;Capacity : 50% of all drives
+      &#9642;Read Performance : Excellent<br/>
+      &#9642;Write Performance : Decent<br/>
       </div>
     </td>
   </tr>  
@@ -123,18 +131,7 @@ Read about the different levels of RAID and where they work best.
   </body>
 </table>
 
-<a name="raid_0"></a>
-### RAID 0
-![raid0](http://blog.logicalincrements.com/wp-content/uploads/2016/10/325px-RAID_0-195x300.png)
-This configuration has striping, but no redundancy of data.  
-It offers the best performance, but no fault tolerance.  
-- Redundancy : None
-- Capacity : All drives
-- Read Performance : Excellent
-- Write Performance : Excellent
-
 ---
 Reference Links
-[RAID types and benefits explained](https://searchstorage.techtarget.com/answer/RAID-types-and-benefits-explained)
-
-        
+[RAID types and benefits explained](https://searchstorage.techtarget.com/answer/RAID-types-and-benefits-explained)  
+[the-levels-of-raid](https://www.servercentral.com/blog/the-levels-of-raid/)  
