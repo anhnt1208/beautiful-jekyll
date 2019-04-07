@@ -16,7 +16,7 @@ Read about the different levels of RAID and where they work best.
   </tr>
   <body>
   <tr>
-    <td>RAID 0</td>
+    <td>[RAID 0](#raid_0)</td>
     <td>
       <div>
       &#9642;Data striped across multi hard disk drives for maximum write perfomance.<br/>
@@ -122,6 +122,16 @@ Read about the different levels of RAID and where they work best.
   </tr> 
   </body>
 </table>
+
+<a name="raid_0"></a>
+### RAID 0
+![raid0](http://blog.logicalincrements.com/wp-content/uploads/2016/10/325px-RAID_0-195x300.png)
+This configuration has striping, but no redundancy of data.  
+It offers the best performance, but no fault tolerance.  
+- Redundancy : None
+- Capacity : All drives
+- Read Performance : Excellent
+- Write Performance : Excellent
 
 ---
 Reference Links
