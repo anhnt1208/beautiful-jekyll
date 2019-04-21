@@ -75,7 +75,7 @@ If you do not plan onconnecting to the public Internet, the local network ID mus
 ## Host ID Guidelines
 The host ID identifies a TCP/IP host within a network.  
 The combination of IP network ID and IP host IDis an IP address.  
-Follow these guidelines when assigning a host ID:
+Follow these guidelines when assigning a host ID:  
 - The host ID must be unique to the network ID.
 - All bits within the host ID cannot be set to 1, because this host ID is reserved as a broadcast address to send a packet to all hosts on a network.
 - All bits in the host ID cannot be set to 0, because this host ID is reserved to denote the IP networkID.
@@ -86,17 +86,17 @@ Follow these guidelines when assigning a host ID:
 | B      	| 10           	| 16                                	| 16,384 (2^14)      	| 2^16 – 2 = 65,534    	| 128.0.0.0 ~ 191.255.0.0   	| 255.255.0.0         	| /16           	|
 | C      	| 110          	| 24                                	| 2,097,152 (2^21)   	| 2^8 – 2 = 254        	| 192.0.0.0 ~ 223.255.255.0 	| 255.255.255.0       	| /24           	|
 
-The number of addresses usable for addressing specific hosts in each network is always **2N - 2**, 
-where *N* is the number of rest field bits, and the subtraction of *2* adjusts for the use of the all-bits-zero host portion for network address and the all-bits-one host portion as a broadcast address. 
-Thus, for a Class C address with 8 bits available in the host field, the maximum number of hosts is 254.
+The number of addresses usable for addressing specific hosts in each network is always **2N - 2**,  
+where *N* is the number of rest field bits, and the subtraction of *2* adjusts for the use of the all-bits-zero host portion for network address and the all-bits-one host portion as a broadcast address.  
+Thus, for a Class C address with 8 bits available in the host field, the maximum number of hosts is 254.  
 
-Today, IP addresses are associated with a subnet mask. 
-This was not required in a classful network because the mask was implied by the address itself; 
-Any network device would inspect the first few bits of the IP address to determine the class of the address and thus its netmask.
+Today, IP addresses are associated with a subnet mask.  
+This was not required in a classful network because the mask was implied by the address itself.   
+Any network device would inspect the first few bits of the IP address to determine the class of the address and thus its netmask.  
 
-The blocks numerically at the start and end of classes A, B and C were originally reserved for special addressing or future features, 
-- 0.0.0.0/8 and 127.0.0.0/8 are reserved in former class A.
-While the 127.0.0.0/8 network is a Class A network, it is designated for loopback and cannot be assigned to a network
-- 128.0.0.0/16 and 191.255.0.0/16 were reserved in former class B but are now available for assignment; 
-- 192.0.0.0/24 and 223.255.255.0/24 are reserved in former class C. 
+The blocks numerically at the start and end of classes A, B and C were originally reserved for special addressing or future features  
+- 0.0.0.0/8 and 127.0.0.0/8 are reserved in former class A.  
+While the 127.0.0.0/8 network is a Class A network, it is designated for loopback and cannot be assigned to a network  
+- 128.0.0.0/16 and 191.255.0.0/16 were reserved in former class B but are now available for assignment;   
+- 192.0.0.0/24 and 223.255.255.0/24 are reserved in former class C.   
 
