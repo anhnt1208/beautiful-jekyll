@@ -1,6 +1,6 @@
 ---
 layout: post
-title: IP Addressing : Introduction and Classful Addressing
+title: IP Addressing - Introduction and Classful Addressing
 subtitle: 
 tags: [infrastructure]
 ---
