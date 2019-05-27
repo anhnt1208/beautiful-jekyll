@@ -107,18 +107,16 @@ $ systemd-analyze blame
   1.248s cloud-config.service
 ```
 To view full log service status
-```
+```bash
 journalctl -u <service-name>
 ```
 To dump our boot info into a plot data
-```
+```bash
 systemd-analyze plot > /tmp/plot.svg
 eog /tmp/plot.svg
 ```
 
 ### References
-[systemd replaces init in linux](https://www.tecmint.com/systemd-replaces-init-in-linux)
-
-[blame systemd](http://0pointer.de/blog/projects/blame-game.html)
-
-[SysVinit to Systemd Cheatsheet](https://fedoraproject.org/wiki/SysVinit_to_Systemd_Cheatsheet)
+[systemd replaces init in linux](https://www.tecmint.com/systemd-replaces-init-in-linux)   
+[blame systemd](http://0pointer.de/blog/projects/blame-game.html)   
+[SysVinit to Systemd Cheatsheet](https://fedoraproject.org/wiki/SysVinit_to_Systemd_Cheatsheet)   
