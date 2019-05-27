@@ -82,11 +82,11 @@ journalctl -u apt-daily-upgrade -b
 |ls /etc/rc.d/init.d/|systemctl (or) systemctl list-unit-files --type=service (or) ls /lib/systemd/system/*.service /etc/systemd/system/*.service|Used to list the services that can be started or stopped. Used to list all the services and other units|
 |chkconfig <service-name> on|systemctl enable <service-name>|Turn the service on, for start at next boot, or other trigger.|
 |chkconfig <service-name> off|systemctl disable <service-name>|Turn the service off for the next reboot, or any other trigger.|
-|chkconfig <service-name>   systemctl is-enabled <service-name>|Used to check whether a service is configured to start or not in the current environment.|
+|chkconfig <service-name>|systemctl is-enabled <service-name>|Used to check whether a service is configured to start or not in the current environment.|
 |chkconfig --list|systemctl list-unit-files --type=service (or) ls /etc/systemd/system/*.wants/|Print a table of services that lists which runlevels each is configured on or off|
-|chkconfig --list | grep 5:on|systemctl list-dependencies graphical.target|Print a table of services that will be started when booting into graphical mode|
+|chkconfig --list \| grep 5:on|systemctl list-dependencies graphical.target|Print a table of services that will be started when booting into graphical mode|
 |chkconfig <service-name> --list|ls /etc/systemd/system/*.wants/<service-name>.service|Used to list what levels this service is configured on or off|
-|chkconfig <service-name> --add systemctl daemon-reload Used when you create a new service file or modify any configuration|
+|chkconfig <service-name> --add|systemctl daemon-reload|Used when you create a new service file or modify any configuration|
 
 ## Analyze the boot process with the blame command
 Run `systemd-analyze` without any extra commands will display the last boot statistics
