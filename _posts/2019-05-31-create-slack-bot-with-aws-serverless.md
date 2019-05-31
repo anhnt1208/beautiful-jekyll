@@ -2,18 +2,22 @@
 layout: post
 title: Create Slack Bot with AWS Serverless
 subtitle: Create Slack Bot with API gateway and Lambda
-tags: [aws, slack, API Gateway, Lambda]
+tags: [AWS, Slack, Serverless, API Gateway, Lambda]
 ---
 
-A bot is a nifty way to run code and automate tasks. In Slack, a bot is controlled programmatically via a bot user token that can access one or more of Slack’s APIs. 
-We will create simple bot that receive and process some simple task by entering command into channel
-The way the chat bot will work is the following:
-- User enter message into channel, ex. "@abot say hello"
-- Slack bot will send the request with this message to API Gateway 
-- An AWS Lambda function processes the payload of the request and takes an appropriate action,then reply request to the Slack API 
-We will need permission to create app on Slack, so on this Post we will create us self slack workspace 
+A bot is a nifty way to run code and automate tasks. In Slack, a bot is controlled programmatically via a bot user token that can access one or more of Slack’s APIs.   
+We will create simple bot that receive and process some simple task by entering command into channel   
+Example : 
+- Me : @abot calculate 1 + 2 
+- Bot : 1 + 2 = 3
 
-### Create IAM Role to enable write log from Lambda
+The way the chat bot will work is the following:   
+- User enter message into channel, ex. "@abot say hello"   
+- Slack bot will send the request with this message to API Gateway   
+- An AWS Lambda function processes the payload of the request and takes an appropriate action,then reply request to the Slack API   
+We will need permission to create app on Slack, so on this Post we will create us self slack workspace   
+
+### Create IAM Role to enable write log from Lambda  
 From AWS Console manager, go to `Services` → `IAM`   
 Create Role named **AllowLambdaWriteLog** that allow Lambda can able to write log with below policies   
 ```json
@@ -42,7 +46,7 @@ From AWS Console manager, go to `Services` → `Lambda`
 - **Name** : TestSlackBot
 - **Runtime** : Python 3.6
 - **Execution Role** : use existing role `AllowLambdaWriteLog`
-<img src="./img/20190531/image2019-5-30_14-7-35.png" alt="Create new lambda function">
+<img src="/img/20190531/image2019-5-30_14-7-35.png" alt="Create new lambda function">
 Then click `Create Function` 
 
 ### Implement Lambda function 
@@ -207,54 +211,92 @@ def send_data_to_slack_api(channel_id, message):
     urllib.request.urlopen(request).read()
 ```
 
-The full code is here [Gis](https://gist.github.com/anhnt1208/6c4b281ee07978634648248c5bf529d1)
+The full code is here [Gis](https://gist.github.com/anhnt1208/6c4b281ee07978634648248c5bf529d1)   
 
-### Create API Gateway 
-Go to `API Gateway` service from AWS Console manager.   
-Create new API with follow info
-<img src="./img/20190531/image2019-5-30_13-42-54.png" alt="Create new API Gateway">
+### Create API Gateway    
+Go to `API Gateway` service from AWS Console manager.    
+Create new API with follow info   
+<img src="/img/20190531/image2019-5-30_13-42-54.png" alt="Create new API Gateway">   
 
-At API Resources page, click `Action` → `Create Resource`   
-We don’t need to enable `CORS` as the client will not be a browser   
-<img src="./img/20190531/image2019-5-30_13-48-59.png" alt="Add new resource">
-Click `Create Resource`
+At API Resources page, click `Action` → `Create Resource`    
+We don’t need to enable `CORS` as the client will not be a browser    
+<img src="/img/20190531/image2019-5-30_13-48-59.png" alt="Add new resource">   
+Click `Create Resource`   
 
-### Add trigger from API Gateway to Lambda
-At AWS Console manager, go to `Service` → `API Gateway` 
-Add `POST` method to resource `event-handler`
-<img src="./img/20190531/image2019-5-30_15-48-32.png" alt="Add method POST">
-Click `Save` and the pop-up will notify to add permission to Lambda Function, click `OK`   
-After created the `POST` method will be
-<img src="./img/20190531/image2019-5-30_15-52-30.png" alt="created method">
+### Add trigger from API Gateway to Lambda   
+At AWS Console manager, go to `Service` → `API Gateway`   
+Add `POST` method to resource `event-handler`   
+<img src="/img/20190531/image2019-5-30_15-48-32.png" alt="Add method POST">   
+Click `Save` and the pop-up will notify to add permission to Lambda Function, click `OK`    
+After created the `POST` method will be   
+<img src="/img/20190531/image2019-5-30_15-52-30.png" alt="created method">   
 
 ### Deploy API Gateway
-At API Gateway screen, click `Action` → `Deploy API` , it will show pop-up as below
-<img src="./img/20190531/image2019-5-30_15-54-29.png" alt="Deploy API">
-Click `Deploy`   
-After deployed API, we will have the API request URL for event-handler 
-<img src="./img/20190531/image2019-5-30_16-0-45.png" alt="Deployed result">
-We will use this URL from `event-handler`, not from root `/` path   
-Copy this URL for setting up Slack Bot   
-Go to AWS Lambda, check it has already triggered with API Gateway   
-<img src="./img/20190531/image2019-5-30_16-48-39.png" alt="Lambda trigger">
-<img src="./img/20190531/image2019-5-31_8-54-46.png" alt="API Gateway">
+At API Gateway screen, click `Action` → `Deploy API` , it will show pop-up as below   
+<img src="/img/20190531/image2019-5-30_15-54-29.png" alt="Deploy API">   
+Click `Deploy`    
+After deployed API, we will have the API request URL for event-handler    
+<img src="/img/20190531/image2019-5-30_16-0-45.png" alt="Deployed result">   
+We will use this URL from `event-handler`, not from root `/` path     
+Copy this URL for setting up Slack Bot    
+Go to AWS Lambda, check it has already triggered with API Gateway    
+<img src="/img/20190531/image2019-5-30_16-48-39.png" alt="Lambda trigger">   
+<img src="/img/20190531/image2019-5-31_8-54-46.png" alt="API Gateway">   
 
 ### Create Slack Bot
 For creating bot, we need permission to create app on Slack   
 Or can create new self Slack Team at [here](https://slack.com/create)   
 At Main menu of Slack , click `Administration` → `Manager Apps`   
-<img src="./img/20190531/image2019-5-30_16-13-3.png" alt="Manager Apps">
-Click `Build` → `Your Apps`
-<img src="./img/20190531/image2019-5-30_16-16-23.png" alt="Your Apps">
-Click `Create New App`
-<img src="./img/20190531/image2019-5-30_16-18-31.png" alt="Create new App">
-App Name can be what ever you want   
+<img src="/img/20190531/image2019-5-30_16-13-3.png" alt="Manager Apps">   
+Click `Build` → `Your Apps`   
+<img src="/img/20190531/image2019-5-30_16-16-23.png" alt="Your Apps">   
+Click `Create New App`   
+<img src="/img/20190531/image2019-5-30_16-18-31.png" alt="Create new App">   
+App Name can be what ever you want     
 Click `Create App`   
 
 ### Setup Slack Bot
 Go to `Bot Users` on left menu to Add Bot User   
-Click `Add Bot User` 
-<img src="./img/20190531/image2019-5-30_16-29-46.png" alt="Add Bot User">
+Click `Add Bot User`   
+<img src="/img/20190531/image2019-5-30_16-29-46.png" alt="Add Bot User">   
+
+Go to `Event Subscriptions` and enable event   
+At request URL, enter the URL of API Gateway `event-handler`      
+<img src="/img/20190531/image2019-5-30_16-27-45.png" alt="Add API URL">    
+
+At `Subscribe` to Bot Events, add event `message.channels`   
+<img src="/img/20190531/image2019-5-30_16-32-18.png" alt="Add Subscribe to Bot Events">    
+With event `message.channels`, the bot will listen on the channel that it be added    
+Click `Save Change`    
+
+Now go to `OAuth & Permissions` on left menu    
+<img src="/img/20190531/image2019-5-30_16-34-36.png" alt="OAuth & Permissions">    
+
+Click `Install App to Workspace`  
+<img src="/img/20190531/image2019-5-30_16-36-31.png" alt="Install App to Workspace">     
+
+Click `Authorize` 
+At result screen, we need to get `Bot User OAuth Access Token` to allow AWS lambda send response to Slack API    
+<img src="/img/20190531/image2019-5-30_16-38-35.png" alt="Authorize">    
+
+Go to `AWS Lambda` Service and edit function `TestSlackBot` 
+At `Environment Variables`, add key `BOT_TOKEN` with value is the Bot User OAuth Access Token   
+<img src="/img/20190531/image2019-5-30_16-41-7.png" alt="Environment Variables">    
+
+### Request bot on Slack
+Add bot to the channel that you want to run command   
+<img src="/img/20190531/image2019-5-30_16-43-53.png" alt="Add Bot to channel">    
+<img src="/img/20190531/image2019-5-30_16-44-20.png" alt="Added Bot to channel">    
+
+Now, enter some messages to test bot   
+<img src="/img/20190531/image2019-5-31_9-27-31.png" alt="Test bot">    
+
+We can check lambda log at `AWS Cloud Watch` service   
+<img src="/img/20190531/image2019-5-31_9-30-5.png" alt="API Log">    
+
+
+
+
 
 
 
